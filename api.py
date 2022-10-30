@@ -37,4 +37,5 @@ def delete_comment(id):
 
     return jsonify(comments)
 
+
 app.run()

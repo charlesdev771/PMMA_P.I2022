@@ -1,4 +1,4 @@
-from flask import *
+new commentfrom flask import *
 
 app = Flask(__name__)
 
@@ -10,30 +10,30 @@ def get_comments():
 # Consultar(id)
 @app.route('/comments/<int:id>',methods=['GET'])
 def get_comments_by_id(id):
-    for livro in comments:
-        if livro.get('id') == id:
-            return jsonify(livro)
+    for comment in comments:
+        if comment.get('id') == id:
+            return jsonify(comment)
 
 @app.route('/comments/<int:id>',methods=['PUT'])
 def edit_comments_by_id(id):
-    livro_alterado = request.get_json()
-    for indice,livro in enumerate(comments):
-        if livro.get('id') == id:
-            comments[indice].update(livro_alterado)
-            return jsonify(comments[indice])
+    comment_alter = request.get_json()
+    for iterator,comment in enumerate(comments):
+        if comment.get('id') == id:
+            comments[iterator].update(comment_alter)
+            return jsonify(comments[iterator])
 
 @app.route('/comments',methods=['POST'])
-def add_book():
-    novo_livro = request.get_json()
-    comments.append(novo_livro)
+def add_comment():
+    new comment = request.get_json()
+    comments.append(new_comment)
 
     return jsonify(comments)
 
 @app.route('/comments/<int:id>',methods=['DELETE'])
-def delete_livro(id):
-    for indice, livro in enumerate(comments):
-        if livro.get('id') == id:
-            del comments[indice]
+def delete_comment(id):
+    for iterator, comment in enumerate(comments):
+        if comment.get('id') == id:
+            del comments[iterator]
 
     return jsonify(comments)
 
